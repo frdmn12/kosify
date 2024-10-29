@@ -18,7 +18,7 @@ import { components } from "@/data/resources";
 
 export default function Header() {
   return (
-    <nav className="w-full p-2 flex items-center justify-around">
+    <nav className="w-full p-2 flex items-center justify-around border-2 relative z-10 bg-white">
       <Link
         to="/"
         className="flex items-center justify-around gap-1 cursor-pointer"
@@ -26,11 +26,17 @@ export default function Header() {
         <Icons.logo className="h-4 w-4" />
         <h2 className="text-lg font-bold tracking-tight">Kosify</h2>
       </Link>
-
       <NavigationMenu>
         <NavigationMenuList>
           <NavigationMenuItem>
-            <NavigationMenuTrigger>Getting started</NavigationMenuTrigger>
+            <Link to="/docs">
+              <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                Beranda
+              </NavigationMenuLink>
+            </Link>
+          </NavigationMenuItem>
+          <NavigationMenuItem>
+            <NavigationMenuTrigger>About</NavigationMenuTrigger>
             <NavigationMenuContent>
               <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
                 <li className="row-span-3">
@@ -64,7 +70,7 @@ export default function Header() {
             </NavigationMenuContent>
           </NavigationMenuItem>
           <NavigationMenuItem>
-            <NavigationMenuTrigger>Components</NavigationMenuTrigger>
+            <NavigationMenuTrigger>Fitur</NavigationMenuTrigger>
             <NavigationMenuContent>
               <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
                 {components.map((component) => (
@@ -82,7 +88,18 @@ export default function Header() {
           <NavigationMenuItem>
             <Link to="/docs">
               <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                Documentation
+                FAQ
+              </NavigationMenuLink>
+            </Link>
+          </NavigationMenuItem>
+          <NavigationMenuItem>
+            <Link to="/docs">
+              <NavigationMenuLink
+                className={
+                  "bg-gradient-to-r from-blue-500 to-teal-200 text-sm text-white py-2 px-4 rounded-md font-semibold hover:from-teal-200 hover:to-blue-500 transition delay-700 duration-300 ease-in-out  "
+                }
+              >
+                Get Started
               </NavigationMenuLink>
             </Link>
           </NavigationMenuItem>
