@@ -18,7 +18,7 @@ import { components } from "@/data/resources";
 
 export default function Header() {
   return (
-    <nav className="w-full p-2 flex items-center justify-around border-2 relative z-10 bg-white">
+    <nav className="w-full p-2 flex items-center justify-around border-t-2 border-b-2 relative z-10 bg-white">
       <Link
         to="/"
         className="flex items-center justify-around gap-1 cursor-pointer"
