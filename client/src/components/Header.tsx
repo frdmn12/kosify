@@ -1,13 +1,11 @@
 import {
   NavigationMenu,
   NavigationMenuContent,
-  // NavigationMenuIndicator,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
-  //   NavigationMenuViewport,
 } from "@/components/ui/navigation-menu";
 
 import { cn } from "@/lib/utils";
@@ -18,7 +16,7 @@ import { components } from "@/data/resources";
 
 export default function Header() {
   return (
-    <nav className="w-full p-2 flex items-center justify-around border-t-2 border-b-2 relative z-10 bg-white">
+    <nav className="w-full p-2 flex items-center justify-around border-t-2 border-b-2 relative z-20 bg-white">
       <Link
         to="/"
         className="flex items-center justify-around gap-1 cursor-pointer"
@@ -29,7 +27,7 @@ export default function Header() {
       <NavigationMenu>
         <NavigationMenuList>
           <NavigationMenuItem>
-            <Link to="/docs">
+            <Link to="/">
               <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                 Beranda
               </NavigationMenuLink>
@@ -37,13 +35,11 @@ export default function Header() {
           </NavigationMenuItem>
           <NavigationMenuItem>
             <NavigationMenuTrigger>
-              
               <Link to="/about">
                 <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                   Tentang
                 </NavigationMenuLink>
               </Link>
-              {/* About */}
               </NavigationMenuTrigger>
             <NavigationMenuContent>
               <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
