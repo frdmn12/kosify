@@ -7,6 +7,7 @@ import {
 import { PrismaClient } from '@prisma/client';
 import { CreateUserDto } from './dto/create.user.dto';
 import { UpdateUserDto } from './dto/update.user.dto';
+import * as bcrypt from 'bcrypt';
 
 const prisma = new PrismaClient();
 
@@ -53,8 +54,15 @@ export class UsersService {
       throw new HttpException('Email already exists', HttpStatus.CONFLICT);
     }
 
+    const saltRound = 10;
+    const hashedPassword = await bcrypt.hash(createUserDto.password , saltRound)
+    
     const user = await prisma.user.create({
-      data: createUserDto,
+      data: {
+        name: createUserDto.name,
+        email: createUserDto.email,
+        password: hashedPassword
+      },
     });
 
     return user;
