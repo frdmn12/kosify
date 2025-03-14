@@ -27,9 +27,14 @@ export class AuthController {
   }
 
   @UseGuards(AuthGuard)
-  @Get('profile')
+  @Get('me')
   getUserInfo(@Request() request) {
     // throw new NotImplementedException();
-    return request.user
+    return request.user;
+  }
+
+  @Post('logout')
+  logout() {
+    throw new NotImplementedException();
   }
 }

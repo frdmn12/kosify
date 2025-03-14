@@ -21,3 +21,22 @@ model User {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
+
+model Properties {
+  id        Int @id @default(autoincrement())
+  user_id   Int
+  name      String
+  address   String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Rooms {
+  id         Int @id @default(autoincrement()) 
+  property_id Int
+  room_number String
+  price      Decimal
+  status     String
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt  
+}
