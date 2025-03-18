@@ -97,7 +97,7 @@ export default function Header() {
             </Link>
           </NavigationMenuItem>
           <NavigationMenuItem>
-            <Link to="/docs">
+            <Link to="/login">
               <NavigationMenuLink
                 className={
                   "bg-gradient-to-r from-blue-500 to-teal-200 text-sm text-white py-2 px-4 rounded-md font-semibold hover:from-teal-200 hover:to-blue-500 transition delay-700 duration-300 ease-in-out  "
