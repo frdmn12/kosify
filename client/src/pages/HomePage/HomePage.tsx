@@ -64,7 +64,7 @@ const HomePage = () => {
           PROBLEM
         </h2>
         <p className="font-bold text-3xl text-black ">Kenapa Kosify ?</p>
-        <div className="flex flex-col md:flex-row md:justify-center justify-evenly items-start gap-16 my-7">
+        <div className="flex flex-col flex-wrap md:flex-row md:justify-center justify-evenly items-start gap-16 my-7">
           {problemList.map((problem, index) => (
             <CardHome
               key={index}

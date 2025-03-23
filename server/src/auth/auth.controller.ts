@@ -20,7 +20,7 @@ export class AuthController {
   // LOGIN
   @HttpCode(HttpStatus.OK)
   @Post('login')
-  login(@Body() input: { name: string; password: string }) {
+  login(@Body() input: { email: string; password: string }) {
     // throw new NotImplementedException('this method is not implemented');
 
     return this.authService.authenticate(input);

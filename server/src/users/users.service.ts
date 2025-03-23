@@ -32,9 +32,9 @@ export class UsersService {
     return user;
   }
 
-  async findUserByName(name: string) {
+  async findUserByEmail(email: string) {
     const user = await prisma.user.findFirst({
-      where: { name },
+      where: { email },
     });
 
     if (!user) {

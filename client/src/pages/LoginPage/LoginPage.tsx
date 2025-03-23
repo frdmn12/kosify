@@ -1,20 +1,44 @@
 import { Button } from "@/components/ui/button";
 import { FcGoogle } from "react-icons/fc";
 import { FaXTwitter } from "react-icons/fa6";
-import Image1 from "../../../public/scene 4.png";
+import Image1 from "/scene 4.png";
 import { Input } from "@/components/ui/input";
 import { Card } from "@/components/ui/card";
 import { Icons } from "@/components/Icons";
 import { Link } from "react-router-dom";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { userLogin } from "@/features/AuthSlice";
+import { AppDispatch } from "@/store";
 
+export default function LoginPage() {
+  const dispatch = useDispatch<AppDispatch>();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-export const LoginPage = () => {
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    // check password and email
+
+    
+    dispatch(userLogin({ email, password }))
+      .unwrap()
+      .then((res) => {
+        console.log(res);
+
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   return (
     <div className="flex justify-center items-center min-h-screen">
       <Card className="flex flex-col md:flex-row gap-8 items-center max-w-5xl w-full p-5 m-5">
         <section
           id="illustration"
-          className="w-full md:w-1/2 bg-gradient-to-r from-blue-500 to-teal-200 rounded-md"
+          className="w-full md:w-1/2 bg-gradient-to-r from-blue-500 to-teal-100 rounded-md"
         >
           <img src={Image1} className="" alt="" />
         </section>
@@ -28,27 +52,51 @@ export const LoginPage = () => {
           </div>
           <h1 className="text-6xl font-bold">Hola 👋</h1>
           <p className="text-gray-500">
-            <Link to="/signup" className="underline underline-offset-1 font-normal">
-            Doesn't have account ? 
-            </Link> {" "}
-            or Sign in with</p>
-          <div className="flex gap-4 mb-2 ">
-            <Button variant="outline" className="flex w-full items-center gap-2">
+            <Link
+              to="/register"
+              className="underline underline-offset-1 font-normal"
+            >
+              Doesn't have account ?
+            </Link>{" "}
+            or Sign in with
+          </p>
+          <div className="flex gap-4">
+            <Button
+              variant="outline"
+              className="flex w-full items-center gap-2"
+            >
               <FcGoogle />
               Google
             </Button>
-            <Button variant="outline" className="flex w-full items-center gap-2">
+            <Button
+              variant="outline"
+              className="flex w-full items-center gap-2"
+            >
               <FaXTwitter />
               Twitter
             </Button>
           </div>
-          <hr/>
+          <hr />
           <p className="text-gray-500"></p>
-          <Input type="email" placeholder="Email" />{" "}
-          <Input type="password" placeholder="Password" />{" "}
-          <Button className="w-full">Sign In</Button>
+          <form onSubmit={handleSubmit} className="flex flex-col gap-2">
+            <Input
+              type="email"
+              onChange={(e) => setEmail(e.target.value)}
+              value={email}
+              placeholder="Email"
+            />{" "}
+            <Input
+              type="password"
+              onChange={(e) => setPassword(e.target.value)}
+              value={password}
+              placeholder="Password"
+            />{" "}
+            <Button type="submit" className="w-full">
+              Sign In
+            </Button>
+          </form>
         </section>
       </Card>
     </div>
   );
-};
+}
