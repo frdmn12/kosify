@@ -5,7 +5,7 @@ import Image1 from "/scene 4.png";
 import { Input } from "@/components/ui/input";
 import { Card } from "@/components/ui/card";
 import { Icons } from "@/components/Icons";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { userLogin } from "@/features/AuthSlice";
@@ -15,18 +15,18 @@ export default function LoginPage() {
   const dispatch = useDispatch<AppDispatch>();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
     // check password and email
 
-    
     dispatch(userLogin({ email, password }))
       .unwrap()
       .then((res) => {
         console.log(res);
-
+        navigate("/dashboard/home");
       })
       .catch((err) => {
         console.log(err);

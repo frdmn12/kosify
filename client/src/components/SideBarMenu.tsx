@@ -23,12 +23,12 @@ import { ChevronUp } from "lucide-react";
 const items = [
   {
     title: "Home",
-    url: "#",
+    url: "/dashboard/home",
     icon: Home,
   },
   {
     title: "Properties",
-    url: "#",
+    url: "/dashboard/properties",
     icon: Inbox,
   },
   {
@@ -53,7 +53,7 @@ export function CustomSideBarMenu() {
     <Sidebar>
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel>Application</SidebarGroupLabel>
+          <SidebarGroupLabel>Kosify App</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {items.map((item) => (
@@ -75,7 +75,7 @@ export function CustomSideBarMenu() {
             <SidebarMenuItem>
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                  <SidebarMenuButton>
+                  <SidebarMenuButton variant={"outline"} >
                      Username
                     <ChevronUp className="ml-auto" />
                   </SidebarMenuButton>

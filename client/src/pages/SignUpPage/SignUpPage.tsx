@@ -5,7 +5,7 @@ import { Input } from "@/components/ui/input";
 import { FaXTwitter } from "react-icons/fa6";
 import { FcGoogle } from "react-icons/fc";
 import { Link } from "react-router-dom";
-import Image1 from "../../../public/scene 12.png"
+import Image1 from "/scene 12.png"
 
 export default function SignUpPage() {
   return (

@@ -6,7 +6,7 @@ export default function DashBoardLayout() {
   return (
     <SidebarProvider>
       <AppSidebar />
-      <main>
+      <main className="p-2">
         <SidebarTrigger />
         <Outlet />
       </main>
