@@ -21,12 +21,12 @@ export default function PropertyPage() {
     { browser: "safari", visitors: 200, fill: "var(--color-safari)" },
   ];
 
-  const RadialChart = () => {
+  const RadialChart = ({ title, total }) => {
     return (
       <Card className="flex flex-row items-center max-w-4xl mx-auto">
         <div className="w-1/2 p-6 space-y-4">
           <CardHeader className="p-0 pb-2">
-            <CardTitle className="text-3xl">Jumlah Properti</CardTitle>
+            <CardTitle className="text-3xl">Jumlah {title}</CardTitle>
           </CardHeader>
         </div>
 
@@ -98,12 +98,35 @@ export default function PropertyPage() {
 
   return (
     <div className="m-2 flex flex-col gap-2">
-      <h1 className="scroll-m-20 text-4xl font-semibold tracking-tight lg:text-5xl">
-        Properties
-      </h1>
-      <div className="flex flex-row gap-2 items-center justify-evenly my-4">
-        <RadialChart />
-        <RadialChart />
+      <div className="flex flex-row gap-2 flex-wrap items-center justify-evenly my-4">
+        <Card className="w-1/2 flex flex-row items-center justify-between p-6">
+          <div className="flex flex-col gap-2">
+            <CardHeader>
+              <CardTitle className="text-3xl">Total Properties</CardTitle>
+              <CardDescription className="text-muted-foreground">
+                Total properties in the system
+              </CardDescription>
+            </CardHeader>
+            <CardFooter className="justify-start">
+              <TrendingUp className="h-4 w-4 text-muted-foreground" />
+            </CardFooter>
+          </div>
+          <div className="text-3xl font-bold">100</div>
+        </Card>
+        <Card className="w-1/2 flex flex-row items-center justify-between p-6">
+          <div className="flex flex-col gap-2">
+            <CardHeader>
+              <CardTitle className="text-3xl">Total Properties</CardTitle>
+              <CardDescription className="text-muted-foreground">
+                Total properties in the system
+              </CardDescription>
+            </CardHeader>
+            <CardFooter className="justify-start">
+              <TrendingUp className="h-4 w-4 text-muted-foreground" />
+            </CardFooter>
+          </div>
+          <div className="text-3xl font-bold">100</div>
+        </Card>
       </div>
     </div>
   );

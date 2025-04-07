@@ -8,7 +8,7 @@ import HomePage from "./pages/HomePage/HomePage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import SignUpPage from "./pages/SignUpPage/SignUpPage";
 import DashBoardLayout from "./layout/DashboardLayout";
-import MainPage from "./pages/Dashboard/MainPage";
+import MainPage from "./pages/Dashboard/HomePage";
 import PropertyPage from "./pages/Dashboard/PropertyPage";
 
 export const router = createBrowserRouter(

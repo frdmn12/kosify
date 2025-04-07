@@ -1,54 +1,19 @@
 import { Button } from "@/components/ui/button";
-
 import { Input } from "@/components/ui/input";
 import { Calendar, Search } from "lucide-react";
 import Charts from "./components/Charts";
 import {
   Card,
-  CardContent,
+  // CardContent,
   CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import {
-  Area,
-  AreaChart,
-  Bar,
-  BarChart,
-  CartesianGrid,
-  Label,
-  LabelList,
-  Line,
-  LineChart,
-  PolarAngleAxis,
-  RadialBar,
-  RadialBarChart,
-  Rectangle,
-  ReferenceLine,
-  XAxis,
-  YAxis,
-} from "recharts";
-
-import {
-  ChartContainer,
-  ChartTooltip,
-  ChartTooltipContent,
-} from "@/components/ui/chart";
-import { Progress } from "@/components/ui/progress";
 
 export default function MainPage() {
   return (
     <div className="m-2 flex flex-col gap-3">
-      <section
-        className="flex gap-2 justify-around items-center"
-        id="header-search"
-      >
-        <Input type="text" className="w-full" placeholder="Search..." />
-        <Button variant="outline" size="icon">
-          <Search />
-        </Button>
-      </section>
       <section id="hero">
         <Card className="sm:col-span-2" x-chunk="dashboard-05-chunk-0">
           <CardHeader className="pb-3">
