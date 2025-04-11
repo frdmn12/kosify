@@ -1,5 +1,5 @@
 export class CreatePropertiesDto {
-    name: string;
+  name: string;
   user_id: number;
   address: string;
 }
