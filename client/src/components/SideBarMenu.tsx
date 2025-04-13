@@ -1,4 +1,12 @@
-import { Bed, Calendar, Home, Inbox, Search, Settings, User2 } from "lucide-react";
+import {
+  Bed,
+  Calendar,
+  Home,
+  Inbox,
+  Search,
+  Settings,
+  User2,
+} from "lucide-react";
 
 import {
   Sidebar,
@@ -61,15 +69,16 @@ export function CustomSideBarMenu() {
           <span className="text-lg font-bold tracking-tight">Kosify</span>
         </div>
       </SidebarHeader>
-      <SidebarGroupLabel className="text-sm font-medium px-4 py-2 text-gray-900 dark:text-gray-100">
-        Menu
-      </SidebarGroupLabel>
+
       <SidebarContent>
         <SidebarGroup>
           {/* <SidebarGroupLabel>
             <Icons.logo className="h-4 w-4" />
             Kosify App
           </SidebarGroupLabel> */}
+          <SidebarGroupLabel >
+            Menu
+          </SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {items.map((item) => (

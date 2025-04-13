@@ -17,7 +17,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { Eye, Pencil, Plus, Trash } from "lucide-react";
+import { Pencil, Plus, Trash } from "lucide-react";
 import { useState } from "react";
 import {
   Dialog,
@@ -39,9 +39,8 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from "@/components/ui/pagination";
-import { Link } from "react-router-dom";
 
-const initialProperties = [
+const initialRooms = [
   {
     id: 1,
     name: "Kos 1",
@@ -50,70 +49,71 @@ const initialProperties = [
   },
 ];
 
-export default function PropertyPage() {
-  // State untuk list properties
-  const [properties, setProperties] = useState(initialProperties);
-
+export default function RoomsPage() {
+  // State untuk list rooms
+  const [rooms, setRooms] = useState(initialRooms);
+  
   // State untuk dialog tambah
   const [openAddDialog, setOpenAddDialog] = useState(false);
-  const [newProperty, setNewProperty] = useState({
+  const [newRoom, setNewRoom] = useState({
     name: "",
     address: "",
-    totalRooms: 0,
+    totalRooms: 0
   });
-
+  
   // State untuk dialog edit
   const [openEditDialog, setOpenEditDialog] = useState(false);
-  const [editingProperty, setEditingProperty] = useState(null);
-
+  const [editingRoom, setEditingRoom] = useState(null);
+  
   const [openDeleteDialog, setOpenDeleteDialog] = useState(false);
-  const [deleteProperty, setDeleteProperty] = useState(null);
+  const [deleteRoom, setDeleteRoom] = useState(null);
 
+  
   // Fungsi untuk menangani tambah properti
-  const handleAddProperty = () => {
-    const propertyToAdd = {
-      id: properties.length + 1,
-      ...newProperty,
+  const handleAddRooms = () => {
+    const roomToAdd = {
+      id: rooms.length + 1,
+      ...newRoom
     };
-
-    setProperties([...properties, propertyToAdd]);
-    setNewProperty({ name: "", address: "", totalRooms: 0 });
+    
+    setRooms([...rooms, roomToAdd]);
+    setNewRoom({ name: "", address: "", totalRooms: 0 });
     setOpenAddDialog(false);
   };
-
+  
   // Fungsi untuk membuka dialog edit
-  const handleOpenEdit = (property) => {
-    setEditingProperty(property);
+  const handleOpenEdit = (room) => {
+    setEditingRoom(room);
     setOpenEditDialog(true);
   };
 
-  const handleOpenDelete = (property) => {
-    setDeleteProperty(property);
+  const handleOpenDelete = (room) => {
+    setDeleteRoom(room);
     setOpenDeleteDialog(true);
-  };
-
+  }
+  
   // Fungsi untuk menangani edit properti
-  const handleEditProperty = () => {
-    // setProperties(
-    //   properties.map((property) =>
-    //     property.id === editingProperty.id ? editingProperty : property
+  const handleEditRoom = () => {
+    // setRooms(
+    //   rooms.map((room) => 
+    //     room.id === editingRoom.id ? editingRoom : room
     //   )
     // );
     setOpenEditDialog(false);
   };
-
+  
   // Fungsi untuk menangani hapus properti
-  const handleDeleteProperty = (propertyId) => {
-    // setProperties(properties.filter((property) => property.id !== propertyId));
+  const handleDeleteRoom = (roomId) => {
+    // setRooms(rooms.filter((room) => room.id !== roomId));
   };
 
   return (
     <div className="m-2 flex flex-col gap-2">
       <Card>
         <CardHeader className="flex flex-row items-center justify-between">
-          <CardTitle>Properties</CardTitle>
-
-          {/* Dialog Tambah Property */}
+          <CardTitle>Rooms</CardTitle>
+          
+          {/* Dialog Tambah Room */}
           <Dialog open={openAddDialog} onOpenChange={setOpenAddDialog}>
             <DialogTrigger asChild>
               <Button variant="outline">
@@ -122,9 +122,9 @@ export default function PropertyPage() {
             </DialogTrigger>
             <DialogContent className="sm:max-w-md">
               <DialogHeader>
-                <DialogTitle>Add Property</DialogTitle>
+                <DialogTitle>Add Room</DialogTitle>
                 <DialogDescription>
-                  Add a new property to the list.
+                  Add a new room to the list.
                 </DialogDescription>
               </DialogHeader>
               <div className="grid gap-4 py-4">
@@ -132,13 +132,11 @@ export default function PropertyPage() {
                   <Label htmlFor="add-name" className="text-right">
                     Name
                   </Label>
-                  <Input
-                    id="add-name"
-                    className="col-span-3"
-                    value={newProperty.name}
-                    onChange={(e) =>
-                      setNewProperty({ ...newProperty, name: e.target.value })
-                    }
+                  <Input 
+                    id="add-name" 
+                    className="col-span-3" 
+                    value={newRoom.name}
+                    onChange={(e) => setNewRoom({...newRoom, name: e.target.value})}
                   />
                 </div>
                 <div className="grid grid-cols-4 items-center gap-4">
@@ -148,13 +146,8 @@ export default function PropertyPage() {
                   <Input
                     id="add-address"
                     className="col-span-3"
-                    value={newProperty.address}
-                    onChange={(e) =>
-                      setNewProperty({
-                        ...newProperty,
-                        address: e.target.value,
-                      })
-                    }
+                    value={newRoom.address}
+                    onChange={(e) => setNewRoom({...newRoom, address: e.target.value})}
                   />
                 </div>
                 <div className="grid grid-cols-4 items-center gap-4">
@@ -165,42 +158,37 @@ export default function PropertyPage() {
                     id="add-rooms"
                     type="number"
                     className="col-span-3"
-                    value={newProperty.totalRooms}
-                    onChange={(e) =>
-                      setNewProperty({
-                        ...newProperty,
-                        totalRooms: parseInt(e.target.value) || 0,
-                      })
-                    }
+                    value={newRoom.totalRooms}
+                    onChange={(e) => setNewRoom({...newRoom, totalRooms: parseInt(e.target.value) || 0})}
                   />
                 </div>
               </div>
               <DialogFooter>
-                <Button type="button" onClick={handleAddProperty}>
-                  Create
-                </Button>
+                <Button type="button" onClick={handleAddRooms}>Create</Button>
               </DialogFooter>
             </DialogContent>
           </Dialog>
-
-          {/* Dialog Edit Property */}
+          
+          {/* Dialog Edit Room */}
           <Dialog open={openEditDialog} onOpenChange={setOpenEditDialog}>
             <DialogContent className="sm:max-w-md">
               <DialogHeader>
-                <DialogTitle>Edit Property</DialogTitle>
-                <DialogDescription>Edit property details.</DialogDescription>
+                <DialogTitle>Edit Room</DialogTitle>
+                <DialogDescription>
+                  Edit room details.
+                </DialogDescription>
               </DialogHeader>
-              {editingProperty && (
+              {editingRoom && (
                 <div className="grid gap-4 py-4">
                   <div className="grid grid-cols-4 items-center gap-4">
                     <Label htmlFor="edit-name" className="text-right">
                       Name
                     </Label>
-                    <Input
-                      id="edit-name"
-                      className="col-span-3"
-                      // value={editingProperty.name}
-                      // onChange={(e) => setEditingProperty({...editingProperty, name: e.target.value})}
+                    <Input 
+                      id="edit-name" 
+                      className="col-span-3" 
+                      // value={editingRoom.name}
+                      // onChange={(e) => setEditingRoom({...editingRoom, name: e.target.value})}
                     />
                   </div>
                   <div className="grid grid-cols-4 items-center gap-4">
@@ -210,8 +198,8 @@ export default function PropertyPage() {
                     <Input
                       id="edit-address"
                       className="col-span-3"
-                      // value={editingProperty.address}
-                      // onChange={(e) => setEditingProperty({...editingProperty, address: e.target.value})}
+                      // value={editingRoom.address}
+                      // onChange={(e) => setEditingRoom({...editingRoom, address: e.target.value})}
                     />
                   </div>
                   <div className="grid grid-cols-4 items-center gap-4">
@@ -222,46 +210,39 @@ export default function PropertyPage() {
                       id="edit-rooms"
                       type="number"
                       className="col-span-3"
-                      // value={editingProperty.totalRooms}
-                      // onChange={(e) => setEditingProperty({...editingProperty, totalRooms: parseInt(e.target.value) || 0})}
+                      // value={editingRoom.totalRooms}
+                      // onChange={(e) => setEditingRoom({...editingRoom, totalRooms: parseInt(e.target.value) || 0})}
                     />
                   </div>
                 </div>
               )}
               <DialogFooter>
-                <Button type="button" onClick={handleEditProperty}>
-                  Save Changes
-                </Button>
+                <Button type="button" onClick={handleEditRoom}>Save Changes</Button>
               </DialogFooter>
             </DialogContent>
           </Dialog>
 
-          {/* Dialog Delete Property */}
+          {/* Dialog Delete Room */}
           <Dialog open={openDeleteDialog} onOpenChange={setOpenDeleteDialog}>
             <DialogContent className="sm:max-w-md">
               <DialogHeader>
-                <DialogTitle>Delete Property</DialogTitle>
+                <DialogTitle>Delete Room</DialogTitle>
                 <DialogDescription>
-                  Are you sure you want to delete this property?
+                  Are you sure you want to delete this room?
                 </DialogDescription>
               </DialogHeader>
               <DialogFooter>
-                <Button
-                  type="button"
-                  variant="destructive"
-                  onClick={() => handleDeleteProperty(deleteProperty.id)}
-                >
-                  Delete
-                </Button>
+                <Button type="button" variant="destructive" onClick={() => handleDeleteRoom(deleteRoom.id)}>Delete</Button>
               </DialogFooter>
             </DialogContent>
           </Dialog>
+
         </CardHeader>
         <CardContent>
           <Table>
             <TableHeader>
               <TableRow>
-                <TableHead className="w-[200px]">Action</TableHead>
+                <TableHead className="w-[150px]">Action</TableHead>
                 <TableHead>No</TableHead>
                 <TableHead>Name</TableHead>
                 <TableHead>Address</TableHead>
@@ -269,33 +250,28 @@ export default function PropertyPage() {
               </TableRow>
             </TableHeader>
             <TableBody>
-              {properties.map((property, index) => (
-                <TableRow key={property.id}>
+              {rooms.map((room, index) => (
+                <TableRow key={room.id}>
                   <TableCell className="flex gap-2 items-center">
-                    <Button
-                      variant="outline"
+                    <Button 
+                      variant="outline" 
                       size="icon"
-                      onClick={() => handleOpenEdit(property)}
+                      onClick={() => handleOpenEdit(room)}
                     >
                       <Pencil className="h-4 w-4" />
                     </Button>
-                    <Link to={`/dashboard/properties/${property.id}`}>
-                      <Button variant="outline" size="icon">
-                        <Eye className="h-4 w-4" />
-                      </Button>
-                    </Link>
-                    <Button
-                      variant="destructive"
+                    <Button 
+                      variant="destructive" 
                       size="icon"
-                      onClick={() => handleOpenDelete(property)}
+                      onClick={() => handleOpenDelete(room)}
                     >
                       <Trash className="h-4 w-4" />
                     </Button>
                   </TableCell>
                   <TableCell>{index + 1}</TableCell>
-                  <TableCell>{property.name}</TableCell>
-                  <TableCell>{property.address}</TableCell>
-                  <TableCell>{property.totalRooms}</TableCell>
+                  <TableCell>{room.name}</TableCell>
+                  <TableCell>{room.address}</TableCell>
+                  <TableCell>{room.totalRooms}</TableCell>
                 </TableRow>
               ))}
             </TableBody>
