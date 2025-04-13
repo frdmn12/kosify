@@ -11,6 +11,7 @@ import DashBoardLayout from "./layout/DashboardLayout";
 import MainPage from "./pages/Dashboard/HomePage";
 import PropertyPage from "./pages/Dashboard/PropertyPage";
 import RoomsPage from "./pages/Dashboard/RoomsPage";
+import PaymentsPage from "./pages/Dashboard/PaymentsPage";
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
@@ -23,6 +24,7 @@ export const router = createBrowserRouter(
         <Route path="home" element={<MainPage />} />
         <Route path="properties" element={<PropertyPage />} />
         <Route path="rooms" element={<RoomsPage />} />
+        <Route path="payments" element={<PaymentsPage />} />
       </Route>
       <Route path="/login" element={<LoginPage />} />
       <Route path="/register" element={<SignUpPage />} />
