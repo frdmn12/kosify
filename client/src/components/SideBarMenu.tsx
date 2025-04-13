@@ -1,4 +1,4 @@
-import { Calendar, Home, Inbox, Search, Settings } from "lucide-react";
+import { Bed, Calendar, Home, Inbox, Search, Settings, User2 } from "lucide-react";
 
 import {
   Sidebar,
@@ -21,6 +21,7 @@ import {
 import { ChevronUp } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Icons } from "./Icons";
+import { FaMoneyBill } from "react-icons/fa6";
 
 // Menu items.
 const items = [
@@ -35,19 +36,19 @@ const items = [
     icon: Inbox,
   },
   {
-    title: "Payment",
-    url: "#",
-    icon: Calendar,
+    title: "Rooms",
+    url: "/dashboard/rooms",
+    icon: Bed,
   },
   {
-    title: "Search",
-    url: "#",
-    icon: Search,
+    title: "Payments",
+    url: "/dashboard/payments",
+    icon: FaMoneyBill,
   },
   {
-    title: "Settings",
-    url: "#",
-    icon: Settings,
+    title: "Renters",
+    url: "/dashboard/renters",
+    icon: User2,
   },
 ];
 
@@ -60,6 +61,9 @@ export function CustomSideBarMenu() {
           <span className="text-lg font-bold tracking-tight">Kosify</span>
         </div>
       </SidebarHeader>
+      <SidebarGroupLabel className="text-sm font-medium px-4 py-2 text-gray-900 dark:text-gray-100">
+        Menu
+      </SidebarGroupLabel>
       <SidebarContent>
         <SidebarGroup>
           {/* <SidebarGroupLabel>
